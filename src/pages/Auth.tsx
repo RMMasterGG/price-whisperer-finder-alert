@@ -1,8 +1,8 @@
 
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import AuthForm from "@/components/auth/AuthForm";
+import { useEffect } from "react";
 
 const Auth = () => {
   const { isAuthenticated } = useAuth();

@@ -1,19 +1,10 @@
-
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, BadgePercent, LineChart, Bell } from "lucide-react";
+import { ArrowRight, BadgePercent, LineChart, Bell, User } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const { isAuthenticated } = useAuth();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate("/dashboard");
-    }
-  }, [isAuthenticated, navigate]);
 
   return (
     <div className="min-h-screen">
@@ -21,10 +12,26 @@ const Index = () => {
       <header className="border-b">
         <div className="container mx-auto p-4 flex justify-between items-center">
           <div className="flex items-center space-x-2">
-            <span className="font-bold text-xl text-brand-700">PriceWhisperer</span>
+            <Link to="/" className="font-bold text-xl text-brand-700">PriceWhisperer</Link>
           </div>
-          <div>
-            <Button onClick={() => navigate("/auth")}>Войти</Button>
+          <div className="flex items-center gap-4">
+            {isAuthenticated ? (
+              <>
+                <Button variant="outline" asChild>
+                  <Link to="/dashboard">Мой кабинет</Link>
+                </Button>
+                <Button asChild>
+                  <Link to="/profile">
+                    <User className="h-4 w-4 mr-2" />
+                    Профиль
+                  </Link>
+                </Button>
+              </>
+            ) : (
+              <Button asChild>
+                <Link to="/auth">Войти</Link>
+              </Button>
+            )}
           </div>
         </div>
       </header>

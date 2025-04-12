@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
@@ -7,6 +6,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Label } from "@/components/ui/label";
 import { useAuth } from "@/hooks/useAuth";
+import { Link } from "react-router-dom";
 
 const AuthForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -132,9 +132,9 @@ const AuthForm = () => {
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
                   <Label htmlFor="login-password">Пароль</Label>
-                  <Button variant="link" className="p-0 h-auto">
+                  <Link to="/forgot-password" className="text-sm font-medium text-brand-700 hover:underline">
                     Забыли пароль?
-                  </Button>
+                  </Link>
                 </div>
                 <Input
                   id="login-password"
